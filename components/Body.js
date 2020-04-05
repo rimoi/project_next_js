@@ -31,6 +31,21 @@ const cancelContract = (element) => {
         document.getElementById('notice').classList.remove('d-none');
         document.getElementById('notice').className = 'alert alert-success';
         document.getElementById('notice').innerText = `Votre demande a bien été prise en compte !`;
+    } else if ('next-page' === element) {
+        if (document.getElementById('name-insurer').value
+            && document.getElementById('number-contrat').value
+            && document.getElementById('due-date').value
+            && document.getElementById('period-notice').value
+        ){
+            document.getElementById('js-alert').className = 'alert alert-success';
+            document.getElementById('js-alert').innerText = 'Merci d\'avoir rempli les champs !';
+        } else {
+            document.getElementById('js-alert').className = 'alert alert-danger';
+            document.getElementById('js-alert').innerText = 'Merci de remplir les champs !';
+        }
+    } else if ('previous-page' === element) {
+        document.getElementById('js-alert').className = 'alert alert-warning';
+        document.getElementById('js-alert').innerText = 'il n\'y a pas de page précédente !';
     }
 }
 
@@ -80,7 +95,7 @@ const Body = () => (
                     </div>
                     <div className="col-lg-4">
                         <div className="text-muted mt-6">Nº de contrat</div>
-                        <Input type='number' classInput="form-control" classLabel="" id="contrat" name='contrat'  text="" onChange={handleChange} element="contrat" />
+                        <Input type='number' classInput="form-control" classLabel="" id="number-contrat" name='number-contrat'  text="" onChange={handleChange} element="number-contrat" />
                     </div>
                 </div>
                 <div className="row">
@@ -101,6 +116,11 @@ const Body = () => (
                     </div>
                     <div className="col-lg-6 text-right">
                         <Button classButton="btn btn-primary" id="next-page" text="CONTINUER &nbsp;&nbsp;&nbsp; >" onCancel={cancelContract} element="next-page" />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-lg-12 spacing">
+                        <div id="js-alert"></div>
                     </div>
                 </div>
             </div>
