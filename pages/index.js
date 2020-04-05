@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Layout from "../components/Layout";
-import Title from "../components/Title";
 import Header from "../components/Header";
+import Body from "../components/Body";
 
 const Home = () => (
     <div className="container">
@@ -12,8 +12,10 @@ const Home = () => (
         </Head>
 
         <Layout>
-            <Header />
-            <Title text="Test frontend."/>
+            <main>
+                <Header />
+                <Body />
+            </main>
         </Layout>
     </div>
 );
